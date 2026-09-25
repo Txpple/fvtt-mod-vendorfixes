@@ -40,6 +40,17 @@ Charisma save are Frightened "until the end of your next turn". The book's effec
 wearing the book's minute is touched; the compendium is never edited. Switch: *Necrotic Shroud
 frightens until the end of the Aasimar's next turn* (on by default).
 
+### VF-003 — Pass without Trace radiates its 30-foot Emanation
+
+**The problem.** The PHB's Pass without Trace radiates a 30-foot aura: you and the creatures you
+choose in it get +10 to Stealth. The book ships the +10 as an effect, but the spell has **no
+area** at all, so nothing can tell who stands in the aura and the bonus only lands by hand.
+
+**The fix.** When the spell's data is prepared, a Pass without Trace with no area is given its
+30-foot Emanation, in memory. Nothing in any compendium or on any sheet is saved. A spell that
+already has an area is left alone. Switch: *Pass without Trace radiates its 30-foot Emanation*
+(on by default; takes effect on reload).
+
 ## Testing
 
 - `node tools/check-register.mjs` checks that the register parses and agrees with the code

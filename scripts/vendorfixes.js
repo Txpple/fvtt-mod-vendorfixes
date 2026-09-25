@@ -8,3 +8,4 @@
 import "./core.js";
 import "./patches/shim-chains.js";
 import "./patches/necrotic-shroud-clock.js";
+import "./patches/pass-without-trace-area.js";
