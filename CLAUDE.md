@@ -12,7 +12,7 @@ which may never happen. When upstream fixes the bug, the fix is retired.
 
 **Replaces Misc Patches** (`../fvtt-mod-miscpatches`, user call 2026-09-25). Its only live
 patch, shim chains, moved here unchanged as **VF-001** (module id and setting namespace are
-now `fvtt-mod-vendorfixes`). Misc Patches is being retired; see
+now `fvtt-mod-vendorfixes`). Misc Patches is retired (archived, disabled on prod); see
 [Retiring Misc Patches](#retiring-misc-patches) below. Do not add new work there.
 
 ### Where a fix belongs
