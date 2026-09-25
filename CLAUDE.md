@@ -140,4 +140,4 @@ Each outward step waits for the user's go-ahead.
 4. Misc Patches: a final commit pointing to this repo, then archive the GitHub repo.
 5. Sister docs that still name Misc Patches as the home of platform fixes or of shim chains:
    `../fvtt-mod-battleflow` (BACKLOG Half Speed row, NOTES §2), `../fvtt-mod-fxstudio`
-   (CLAUDE.md, README.md, PLAN.md). Mentions of the teleport patch are history and stay.
+   (CLAUDE.md, README.md, PLAN.md).
