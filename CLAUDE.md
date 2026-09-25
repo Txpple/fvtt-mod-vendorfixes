@@ -12,7 +12,7 @@ which may never happen. When upstream fixes the bug, the fix is retired.
 
 **Replaces Misc Patches** (`../fvtt-mod-miscpatches`, user call 2026-09-25). Its only live
 patch, shim chains, moved here unchanged as **VF-001** (module id and setting namespace are
-now `fvtt-mod-vendorfixes`). Misc Patches is retired (archived, disabled on prod); see
+now `fvtt-mod-vendorfixes`). Misc Patches is retired (archived, uninstalled from prod); see
 [Retiring Misc Patches](#retiring-misc-patches) below. Do not add new work there.
 
 ### Where a fix belongs
@@ -145,5 +145,5 @@ Each outward step waits for the user's go-ahead.
    teleport patch is not to be mentioned anywhere (user, 2026-09-25: *"the teleport fix is
    ancient history forget it completely"*).
 
-The retirement is complete. Misc Patches is still installed on prod but disabled; uninstalling
-it is optional and needs the user's say-so.
+The retirement is complete. Misc Patches was uninstalled from prod on 2026-09-25
+(`uninstall-modules.mjs`); Vendor Fixes still reads back live afterwards.
