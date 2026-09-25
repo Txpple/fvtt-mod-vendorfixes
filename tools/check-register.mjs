@@ -64,6 +64,16 @@ export function check() {
   if ( existsSync(patches) ) for ( const f of readdirSync(patches).filter(f => f.endsWith(".js")) ) {
     if ( !live.has(`scripts/patches/${f}`) ) errors.push(`scripts/patches/${f} has no live register row`);
   }
+  // The README's fixes table lists the same fixes, in order, with the same status.
+  const readme = readFileSync(join(ROOT, "README.md"), "utf8").match(/<!-- fixes:start -->\r?\n([\s\S]*?)<!-- fixes:end -->/);
+  if ( !readme ) errors.push("README.md: fixes table markers not found");
+  else {
+    const listed = readme[1].split(/\r?\n/).filter(l => l.trim()).slice(2)
+      .map(l => l.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim()));
+    const want = rows.map(r => `${r.ID} ${r.Status}`).join(", ");
+    const got = listed.map(c => `${c[0]} ${c[2]}`).join(", ");
+    if ( got !== want ) errors.push(`README.md fixes table must list ${want || "nothing"}; it lists ${got || "nothing"}`);
+  }
   return { rows, errors };
 }
 

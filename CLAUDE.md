@@ -64,7 +64,10 @@ straight from `scripts/`.
 `REGISTER.md` is the single, clean list of every vendor fix. It is **one Markdown table, one row
 per fix**, readable as-is by a person and parsed by `tools/check-register.mjs` (`parseRegister`
 is exported for any other tool, and `--json` emits the rows). **A fix is not done until its row
-is complete and lands in the same commit as the code.** A row with no code behind it, or a file
+is complete and lands in the same commit as the code.** The README's **Fixes** table (between
+`<!-- fixes:start -->` and `<!-- fixes:end -->`) gets a matching row in the same commit: the same
+columns for every fix, written in plain table language. The check fails if its IDs or statuses
+disagree with the register. A row with no code behind it, or a file
 in `scripts/patches/` with no live row, fails the check.
 
 The table sits between `<!-- register:start -->` and `<!-- register:end -->`. The columns are

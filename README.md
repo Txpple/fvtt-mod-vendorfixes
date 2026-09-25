@@ -15,50 +15,25 @@ as VF-001.
 
 ## Fixes
 
-### VF-001 — Old effect keys reach their new fields
+One row per fix, the same columns for each. The full record (documents, versions measured,
+dependents, when to retire) is the [register](REGISTER.md); the full write-up is the comment at
+the top of each fix file.
 
-**The problem.** dnd5e 6.0 moved many actor fields. It keeps a table that redirects an effect
-written against an old key to the new one, so content not yet updated for 6.0 keeps working.
-But it redirects only **one step**, and some keys moved twice: `movement.speed` goes to
-`movement.walk`, which itself moved to `movement.speeds.walk`. The PHB's Ranger feature Roving
-(+10 feet, climb and swim equal to your speed) landed on a field that is no longer a number, and
-a 35-foot speed read **3510**.
+<!-- fixes:start -->
+| ID | Fix | Status | Book / package | What is wrong | What the fix does | Switch (default) | Release |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| VF-001 | Old effect keys reach their new fields | active | dnd5e system; seen in the PHB | dnd5e 6.0 redirects effects written for moved fields, but only one step, and some fields moved twice. The PHB Ranger's Roving landed on a field that is no longer a number: a 35-foot speed read 3510, and Half Speed never halved. | When the world loads, every redirect is pointed at the field's final home. Fields that moved once are untouched. | *Old effect keys reach their new fields* (on; takes effect on reload) | v1.0.0 |
+| VF-002 | Necrotic Shroud frightens until the end of the Aasimar's next turn | active | PHB, Character Origins (Aasimar, Celestial Revelation) | All three transformation effects carry the transformation's 1-minute clock. That fits Heavenly Wings and Searing Radiance, which sit on the Aasimar, but Necrotic Shroud is the Frightened put on each enemy that fails the save, and it should end at the end of the Aasimar's next turn. The save's own duration is a minute too, so the book holds no right clock and the creature stays Frightened ten rounds. | When the effect lands on a creature, it is set to end at the end of the Aasimar's next turn. Only a copy still carrying the book's minute is touched. | *Necrotic Shroud frightens until the end of the Aasimar's next turn* (on) | unreleased (v1.1.0) |
+| VF-003 | Pass without Trace radiates its 30-foot Emanation | active | PHB, Spells | The spell is a 30-foot aura giving +10 Stealth, but it has no area at all (range Self, empty area), so nothing can tell who stands in the aura and the book's +10 effect only lands by hand. | When the spell loads, one with no area is given its 30-foot Emanation, in memory. A spell that already has an area is left alone. | *Pass without Trace radiates its 30-foot Emanation* (on; takes effect on reload) | unreleased (v1.1.0) |
+<!-- fixes:end -->
 
-**The fix.** When the world loads, every redirect whose target was itself redirected is pointed
-at the end of its chain. Nothing in any compendium or on any sheet is edited. A key that moved
-once is untouched. Switch: *Old effect keys reach their new fields* (on by default; takes effect
-on reload).
-
-### VF-002 — Necrotic Shroud frightens until the end of the Aasimar's next turn
-
-**The problem.** The PHB's Aasimar can transform with Necrotic Shroud: creatures that fail the
-Charisma save are Frightened "until the end of your next turn". The book's Celestial Revelation
-gives all three of its transformation effects the same clock, the transformation's **minute**.
-That is right for Heavenly Wings and Inner Radiance, which sit on the Aasimar. Necrotic Shroud's
-effect is different: it is the Frightened put on each enemy that fails the save, and it copied
-the minute from its siblings. The save's own duration is also a minute, so nothing in the book
-holds the right clock, and the creature stays Frightened ten rounds.
-
-**The fix.** When a copy of that effect is put on a creature, its clock is set to dnd5e's own
-*End of Source's Next Turn*, which ends it at the end of the Aasimar's next turn. Only a copy still
-wearing the book's minute is touched; the compendium is never edited. Switch: *Necrotic Shroud
-frightens until the end of the Aasimar's next turn* (on by default).
-
-### VF-003 — Pass without Trace radiates its 30-foot Emanation
-
-**The problem.** The PHB's Pass without Trace radiates a 30-foot aura: you and the creatures you
-choose in it get +10 to Stealth. The book ships the +10 as an effect, but the spell has **no
-area** at all, so nothing can tell who stands in the aura and the bonus only lands by hand.
-
-**The fix.** When the spell's data is prepared, a Pass without Trace with no area is given its
-30-foot Emanation, in memory. Nothing in any compendium or on any sheet is saved. A spell that
-already has an area is left alone. Switch: *Pass without Trace radiates its 30-foot Emanation*
-(on by default; takes effect on reload).
+None of the fixes edits a compendium or saves anything to a sheet; they correct the data as it
+loads, so every copy is fixed, including items already on actors.
 
 ## Testing
 
 - `node tools/check-register.mjs` checks that the register parses and agrees with the code
-  (offline). Add `--json` to print it as JSON.
+  and with the table above (offline). Add `--json` to print it as JSON.
 - `node tools/smoke-shim-chains.mjs` builds rangers in memory (nothing is written) with an
   old-key speed bonus and with the PHB's own Roving, and checks the speeds come out as the rule
   says. It needs the house MCP repo beside this one for its Foundry client.
