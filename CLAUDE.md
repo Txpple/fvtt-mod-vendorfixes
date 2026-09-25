@@ -137,7 +137,10 @@ Each outward step waits for the user's go-ahead.
    and Misc Patches off; a refresh from prod undoes that until step 3 is done.
 3. Prod: install Vendor Fixes and enable it, then disable Misc Patches. The new `shimChains`
    setting defaults on, so there is no value to carry over.
-4. Misc Patches: a final commit pointing to this repo, then archive the GitHub repo.
-5. Sister docs that still name Misc Patches as the home of platform fixes or of shim chains:
-   `../fvtt-mod-battleflow` (BACKLOG Half Speed row, NOTES §2), `../fvtt-mod-fxstudio`
-   (CLAUDE.md, README.md, PLAN.md).
+4. ~~Misc Patches: a final commit pointing here, then archive the GitHub repo.~~ Done
+   2026-09-25 (archived, read-only).
+5. ~~Sister docs repointed to Vendor Fixes (Battle Flow, FX Studio).~~ Done 2026-09-25. The old
+   teleport patch is not to be mentioned anywhere (user, 2026-09-25: *"the teleport fix is
+   ancient history forget it completely"*).
+
+Step 3 is the only one left.
