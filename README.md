@@ -32,8 +32,12 @@ on reload).
 ### VF-002 — Necrotic Shroud frightens until the end of the Aasimar's next turn
 
 **The problem.** The PHB's Aasimar can transform with Necrotic Shroud: creatures that fail the
-Charisma save are Frightened "until the end of your next turn". The book's effect lasts a whole
-**minute** (the transformation's length), so the creature stays Frightened ten rounds.
+Charisma save are Frightened "until the end of your next turn". The book's Celestial Revelation
+gives all three of its transformation effects the same clock, the transformation's **minute**.
+That is right for Heavenly Wings and Inner Radiance, which sit on the Aasimar. Necrotic Shroud's
+effect is different: it is the Frightened put on each enemy that fails the save, and it copied
+the minute from its siblings. The save's own duration is also a minute, so nothing in the book
+holds the right clock, and the creature stays Frightened ten rounds.
 
 **The fix.** When a copy of that effect is put on a creature, its clock is set to dnd5e's own
 *End of Source's Next Turn*, which ends it at the end of the Aasimar's next turn. Only a copy still

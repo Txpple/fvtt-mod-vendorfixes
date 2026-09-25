@@ -3,13 +3,17 @@
  * Aasimar's next turn, not for a minute.
  *
  * THE PROBLEM (the Battle Flow Aasimar walk, 2026-09-25 — measured on the sandbox, dnd5e 6.0.5,
- * Foundry 14.368, the PHB's `dnd-players-handbook.origins` Celestial Revelation): the rule says
- * a creature that fails the Charisma save "has the Frightened condition until the end of your next
- * turn". The pack's "Necrotic Shroud" effect (id 33dHubd4zYAkSAbE, statuses: frightened) carries
- * `duration: { value: 60, units: "seconds", expiry: "turnStart" }` — the transformation's minute,
- * not the condition's clock — so a frightened creature stays frightened ten rounds, and
- * `Activity#getAppliedEffectChanges` never gives it the activity's duration because the effect
- * already has one.
+ * Foundry 14.368, the PHB's `dnd-players-handbook.origins` Celestial Revelation, phbsptCelestialR):
+ * the item carries three effects, one per transformation, and the vendor gave all three the same
+ * clock, `duration: { value: 60, units: "seconds", expiry: "turnStart" }` — the transformation's
+ * minute. That is right for Heavenly Wings (ImizUNJTv9cWt2bV) and Searing Radiance
+ * (Knzg8v7eDNDBW4ud), which sit on the Aasimar while it is transformed. It is wrong for Necrotic
+ * Shroud (33dHubd4zYAkSAbE, statuses: frightened), which is not the Aasimar's transformation at all:
+ * the save activity (CbkwF9PTlPUvnv7Q) puts it on each enemy that fails the Charisma save, and the
+ * rule says that creature "has the Frightened condition until the end of your next turn". The
+ * minute was copied across from its siblings. Nothing else in the data holds the right clock
+ * either: the activity's own duration is also the transformation's 1 minute. So a frightened
+ * creature stays Frightened ten rounds instead of about one.
  *
  * THE FIX: when a COPY of that effect is created on a creature (the damage tray, Battle Flow's
  * saves machine, anything that applies it), its clock is set to the system's own pseudo-expiry
