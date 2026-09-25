@@ -129,13 +129,12 @@ The zip entries must use forward slashes; the script writes them that way and ve
 
 ## Retiring Misc Patches
 
-State as of 2026-09-25: the port is done locally, and nothing is released or deployed yet.
 Each outward step waits for the user's go-ahead.
 
-1. This repo: `git init`, create the GitHub repo `Txpple/fvtt-mod-vendorfixes`, release v1.0.0.
-2. Sandbox: deploy, enable Vendor Fixes, run `smoke-shim-chains` (expect 5/5), then disable
-   Misc Patches and run it again. Running both modules at once is harmless, since the patch is
-   a no-op once the chains are resolved.
+1. ~~This repo: create `Txpple/fvtt-mod-vendorfixes`, release v1.0.0.~~ Done 2026-09-25.
+2. ~~Sandbox: enable Vendor Fixes, run `smoke-shim-chains` with both modules on, then with Misc
+   Patches off.~~ Done 2026-09-25: 6/6 both times. The sandbox world now has Vendor Fixes on
+   and Misc Patches off; a refresh from prod undoes that until step 3 is done.
 3. Prod: install Vendor Fixes and enable it, then disable Misc Patches. The new `shimChains`
    setting defaults on, so there is no value to carry over.
 4. Misc Patches: a final commit pointing to this repo, then archive the GitHub repo.
