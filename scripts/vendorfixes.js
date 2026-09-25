@@ -7,3 +7,4 @@
  */
 import "./core.js";
 import "./patches/shim-chains.js";
+import "./patches/necrotic-shroud-clock.js";

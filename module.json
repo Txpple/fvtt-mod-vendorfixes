@@ -1,7 +1,7 @@
 {
   "id": "fvtt-mod-vendorfixes",
   "title": "Vendor Fixes",
-  "description": "Stopgap fixes for bugs in the content and packages we depend on — the premium dnd5e books first — held until the vendor ships its own, each behind its own setting and listed in the register. VF-001, old effect keys reach their new fields: dnd5e 6.0 redirects an effect written against a moved key only one step, so a key that moved twice (the PHB's Roving: a 35-foot speed read 3510) lands on the wrong field; each redirect is followed to its end.",
+  "description": "Stopgap fixes for bugs in the content and packages we depend on — the premium dnd5e books first — held until the vendor ships its own, each behind its own setting and listed in the register. VF-001, old effect keys reach their new fields: dnd5e 6.0 redirects an effect written against a moved key only one step, so a key that moved twice (the PHB's Roving: a 35-foot speed read 3510) lands on the wrong field; each redirect is followed to its end. VF-002, Necrotic Shroud's clock: the PHB's Aasimar Necrotic Shroud frightens for a minute; the rule is until the end of the Aasimar's next turn.",
   "version": "1.0.0",
   "authors": [
     {

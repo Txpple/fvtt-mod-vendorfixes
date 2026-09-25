@@ -29,6 +29,17 @@ at the end of its chain. Nothing in any compendium or on any sheet is edited. A 
 once is untouched. Switch: *Old effect keys reach their new fields* (on by default; takes effect
 on reload).
 
+### VF-002 — Necrotic Shroud frightens until the end of the Aasimar's next turn
+
+**The problem.** The PHB's Aasimar can transform with Necrotic Shroud: creatures that fail the
+Charisma save are Frightened "until the end of your next turn". The book's effect lasts a whole
+**minute** (the transformation's length), so the creature stays Frightened ten rounds.
+
+**The fix.** When a copy of that effect is put on a creature, its clock is set to dnd5e's own
+*End of Source's Next Turn*, which ends it at the end of the Aasimar's next turn. Only a copy still
+wearing the book's minute is touched; the compendium is never edited. Switch: *Necrotic Shroud
+frightens until the end of the Aasimar's next turn* (on by default).
+
 ## Testing
 
 - `node tools/check-register.mjs` checks that the register parses and agrees with the code
