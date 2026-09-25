@@ -135,12 +135,15 @@ Each outward step waits for the user's go-ahead.
 2. ~~Sandbox: enable Vendor Fixes, run `smoke-shim-chains` with both modules on, then with Misc
    Patches off.~~ Done 2026-09-25: 6/6 both times. The sandbox world now has Vendor Fixes on
    and Misc Patches off; a refresh from prod undoes that until step 3 is done.
-3. Prod: install Vendor Fixes and enable it, then disable Misc Patches. The new `shimChains`
-   setting defaults on, so there is no value to carry over.
+3. ~~Prod: install Vendor Fixes and enable it, then disable Misc Patches.~~ Done 2026-09-25:
+   v1.0.0 installed through `register-module.mjs`, switched with `configure-modules.mjs`, world
+   restarted. Read back live: Vendor Fixes on, Misc Patches off, `shimChains` on,
+   `movement.speed` → `movement.speeds.walk` (dnd5e 6.0.5, Foundry 14.368).
 4. ~~Misc Patches: a final commit pointing here, then archive the GitHub repo.~~ Done
    2026-09-25 (archived, read-only).
 5. ~~Sister docs repointed to Vendor Fixes (Battle Flow, FX Studio).~~ Done 2026-09-25. The old
    teleport patch is not to be mentioned anywhere (user, 2026-09-25: *"the teleport fix is
    ancient history forget it completely"*).
 
-Step 3 is the only one left.
+The retirement is complete. Misc Patches is still installed on prod but disabled; uninstalling
+it is optional and needs the user's say-so.
